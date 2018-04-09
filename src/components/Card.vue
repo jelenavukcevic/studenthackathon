@@ -22,6 +22,7 @@ export default {
     'AnswerButton': Button
   },
   props: ['question']
+  // injected value
 }
 </script>
 <style scoped lang="scss">
