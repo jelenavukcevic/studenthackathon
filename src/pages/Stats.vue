@@ -33,7 +33,7 @@ export default {
         if (!this.isAnswerCorrect(question)) {
           return acc
         }
-
+        else return acc + (31 - question.anwer.time)
         /**
          * TODO: Calculate a score based on the time it took the user to respond to the question
          *

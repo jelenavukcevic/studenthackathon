@@ -16,10 +16,11 @@ export default {
   },
   computed: {
     percentage () {
+     return (this.elapsed/this.max)*100
       /**
        * TODO: Calculate the percentage of the elapsed time
        */
-      return 50
+      //return 50
     },
     time () {
       return this.pad(this.elapsed)
@@ -33,6 +34,11 @@ export default {
       return ('00' + number).slice(-2)
     },
     start () {
+      this.tick()
+
+      setInterval(this.tick, 1000);
+
+
       /**
        * TODO: Setup an interval that calls the tick function every second
        *
@@ -40,25 +46,25 @@ export default {
        */
     },
     reset () {
-      /**
-       * TODO: Reset the timer to 0
-       */
+
+      this.elapsed = 0
+      clearInterval(this.interval)
       this.$emit('tick', this.elapsed)
       this.start()
     },
     tick () {
       if (this.elapsed >= this.max) {
-        /**
-         * TODO: Stop the timer
+        clearInterval(this.interval)
+         /* TODO: Stop the timer
          */
 
         this.$emit('done')
         return
       }
 
-      /**
-       * TODO: Increment the timer
-       */
+
+      this.elapsed++ // update and add one
+       *//
 
       this.$emit('tick', this.elapsed)
     }
